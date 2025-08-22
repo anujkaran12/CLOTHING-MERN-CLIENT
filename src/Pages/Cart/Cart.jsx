@@ -34,7 +34,7 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
   const [unavailableItems, setUnavailableItems] = useState([]);
-  const[orderPlacedLoading,setOrderPlacedLoading] = useState(true)
+  const[orderPlacedLoading,setOrderPlacedLoading] = useState(false)
 
   useEffect(() => {
     if (userData?.address) {

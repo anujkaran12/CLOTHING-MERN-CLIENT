@@ -69,6 +69,29 @@
   cursor: pointer;
 }
 
+/* ✅ Coupon Success & Error Messages */
+.coupon-success {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #2e7d32; /* green */
+  background: #e8f5e9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #a5d6a7;
+  display: inline-block;
+}
+
+.coupon-error {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #c62828; /* red */
+  background: #ffebee;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ef9a9a;
+  display: inline-block;
+}
+
 .summary-details {
   display: flex;
   flex-direction: column;
@@ -97,7 +120,7 @@
   width: 100%;
   padding: 10px;
   /* margin-top: 20px; */
-  background-color: #28a745;
+  background-color: #1e8a37;
   color: white;
   border: none;
   border-radius: 5px;
@@ -105,7 +128,7 @@
 }
 
 .checkout-button:hover {
-  background-color: #218838;
+  background-color: #17722a;
 }
 
 @media (max-width: 1118px) {

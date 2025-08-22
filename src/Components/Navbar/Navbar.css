@@ -82,7 +82,7 @@
   color: #ddd;
   font-size: 1.01rem;
   transition: color 0.3s;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 
@@ -111,6 +111,9 @@
 
 /* Responsive */
 @media (max-width: 1000px) {
+  .navbar-container{
+    padding: 1rem .8rem ;
+  }
   .nav-categories {
     display: none;
   }
@@ -133,7 +136,7 @@
   }
 
   .navbar-container ul li a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: whitesmoke;
     font-weight: 400;
   }
@@ -141,7 +144,7 @@
   .navbar-container ul.active {
     display: flex;
     min-height: 100vh;
-    row-gap: 3rem;
+    row-gap: 2rem;
   }
 
   .hamburger {
