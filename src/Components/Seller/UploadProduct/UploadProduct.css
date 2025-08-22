@@ -1,0 +1,210 @@
+.upload-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 15px 15px black;
+  border: 1px solid grey;
+
+}
+
+.upload-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.input-group-uploadProduct {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+
+.input-group-uploadProduct input,
+.input-group-uploadProduct textarea {
+  width: 100%;
+  /* height:; */
+  padding: 12px 10px;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 30px;
+  background: transparent;
+  outline: none;
+}
+
+.input-group-uploadProduct label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #777;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  background: var(--background-color);
+  padding: 0 4px;
+}
+
+.input-group-uploadProduct span{
+  font-size: .8rem;
+  padding-left: 10px;
+  color: #555;
+  font-weight: 500;
+  
+}
+.input-group-uploadProduct input:focus + label,
+.input-group-uploadProduct textarea:focus + label,
+.input-group-uploadProduct input:not(:placeholder-shown) + label,
+.input-group-uploadProduct textarea:not(:placeholder-shown) + label,
+.uploadProduct-select:valid + label {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: rgb(31, 105, 216); 
+}
+
+.input-group-uploadProduct input:focus,
+.input-group-uploadProduct textarea:focus,
+.input-group-uploadProduct input:not(:placeholder-shown),
+.input-group-uploadProduct textarea:not(:placeholder-shown){
+  border: 1px solid  rgb(31, 105, 216);
+}
+
+.input-group-uploadProduct input:disabled, .input-group-uploadProduct textarea:disabled{
+     background-color: #e1e1e1;
+  color: rgba(0, 0, 0, 0.851);
+}
+
+.upload-form input[type='checkbox']{
+  background-color: #e1e1e1;
+  color: rgba(0, 0, 0, 0.851);
+}
+
+.checkbox-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.checkbox-label input {
+  margin-right: 4px;
+}
+
+.size-stock-group {
+  flex: 1 1 100%;
+}
+
+.size-stock-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.size-stock-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stock-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.image-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.image-label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gallery-upload {
+  margin-bottom: 10px;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+.submit-btn:disabled{
+  background-color: #d5d5d5;
+  color: rgba(0, 0, 0, 0.837);
+  
+}
+.uploadProduct-select {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: var(--background-color);
+  
+  outline: 0;
+}
+.uploadProduct-select:valid {
+  border-color: rgb(31, 105, 216);
+  outline: none;
+}
+.uploadProduct-select:disabled{
+   background-color: #e1e1e1;
+  color: rgb(0, 0, 0);
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .input-group-uploadProduct,
+  .checkbox-group,
+  .image-section,
+  .size-stock-group {
+    min-width: 100%;
+  }
+  .upload-container{
+    border: 0;
+    box-shadow: 0 0;
+    padding: 20px 0;
+  }
+}

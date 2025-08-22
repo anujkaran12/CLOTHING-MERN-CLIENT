@@ -1,0 +1,260 @@
+/* Order History Container */
+.order-history {
+  
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #222;
+}
+
+.order-history h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #111;
+}
+.orders-length{
+  font-weight: 500;
+  text-align: right;
+}
+/* Filter Section */
+.order-filters {
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.order-filters p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #333;
+}
+
+.order-filters select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-filters select:focus {
+  border-color: #666;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Card Layout */
+.order-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.order-card {
+  display: grid;
+  grid-template-columns: 150px 1fr 320px;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Image */
+.order-img{
+  display: flex;
+  justify-content: center;
+}
+.order-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+/* Order Details */
+.order-details h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #222;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.order-details p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.order-details strong {
+  color: #000;
+}
+
+/* Buyer Info */
+.buyer-info {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  /* margin-top: 1rem; */
+}
+
+.buyer-info h4 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.buyer-info p {
+  margin: 0.4rem 0;
+  color: #444;
+}
+
+.buyer-info strong {
+  color: #000;
+}
+
+/* Status Area */
+.order-status {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.order-status label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.status-select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Update button */
+.status-update-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.status-update-btn:hover {
+  background: #444;
+}
+
+/* Status Colors */
+.status-select.pending {
+  background: #fff3cd;
+  border-color: #ffeeba;
+  color: #856404;
+}
+
+.status-select.shipped {
+  background: #cce5ff;
+  border-color: #b8daff;
+  color: #004085;
+}
+
+.status-select.delivered {
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.status-select.cancelled {
+  background: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .order-card {
+    grid-template-columns: 120px 1fr 320px;
+    padding: 0 1rem;
+  }
+
+  .order-details h3 {
+    font-size: 1rem;
+  }
+
+  .order-details p,
+  .buyer-info {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .order-card-grid{
+  }
+  .order-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: .5rem;
+  }
+
+  .order-img img {
+    height: 400px;
+    width: 80%;
+    
+  }
+
+  .buyer-info {
+    font-size: 0.85rem;
+    padding: 10px 0;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .order-history h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .order-details h3 {
+    font-size: 1rem;
+  }
+
+  .order-details p,
+  .buyer-info {
+    font-size: 0.8rem;
+  }
+
+  .status-update-btn {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+  }
+}

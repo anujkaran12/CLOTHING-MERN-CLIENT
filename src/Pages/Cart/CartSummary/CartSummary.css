@@ -1,0 +1,130 @@
+.cart-summary {
+  height: fit-content;
+  padding: 10px 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* box-shadow: 10px 10px 0 0 black; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 12px;
+  /* background-color: #f9f9f9; */
+}
+.cart-summary h2 {
+  /* margin-bottom: 20px; */
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.cart-summary label {
+  font-size: 0.9rem;
+  color: rgb(106, 106, 106);
+}
+.form-address {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  gap: 10px;
+}
+.form-address label {
+  font-weight: 500;
+}
+.form-address button {
+  padding: 8px;
+  border: 0;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.form-address textarea {
+  border-radius: 10px;
+  outline: 0;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+.form-coupon {
+  display: flex;
+  border: 1px solid black;
+  /* margin-bottom: 30px; */
+  border-radius: 120px;
+  overflow: hidden;
+}
+.form-coupon input {
+  width: 100%;
+  padding: 0 10px;
+  font-size: 0.9rem;
+  outline: 0;
+  border: 0;
+}
+.form-coupon button {
+  padding: 10px 25px;
+  font-size: 0.85rem;
+  background-color: black;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #222;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  /* font-style: italic; */
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.checkout-button {
+  font-size: 1rem;
+  width: 100%;
+  padding: 10px;
+  /* margin-top: 20px; */
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 1118px) {
+  .cart-summary {
+    width: 100%;
+    box-shadow: none;
+    border: 0;
+    padding: 10px 10px 20px 10px;
+  }
+  .summary-details {
+    font-size: 0.9rem;
+  }
+  .summary-total {
+    font-size: 1rem;
+  }
+  .cart-summary form input {
+    font-size: 0.9rem;
+  }
+  .cart-summary label {
+    font-size: 0.8rem;
+  }
+}

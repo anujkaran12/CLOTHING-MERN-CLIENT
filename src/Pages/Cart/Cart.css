@@ -1,0 +1,146 @@
+.cart-container {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  padding: 20px;
+  /* background-color: red; */
+  /* min-height: 100vh; */
+}
+
+.cart-title {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  
+}
+
+
+.cart-items {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-details {
+  display: flex;
+  
+  gap: 0.8rem;
+  grid-column: span 2;
+  cursor:pointer
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  width: 250px;
+
+}
+.cart-item-info span{
+  text-transform: uppercase
+}
+.cart-item-info h2{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Truncates text after 3 lines */
+  -webkit-box-orient: vertical;
+}
+.cart-item-info p{
+  color: #555;
+}
+
+.cart-item-title {
+  color: #222;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize
+}
+
+.cart-item-price {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #222;
+}
+
+.quantity-dropdown {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc !important;
+}
+
+.cart-remove-btn {
+  background:var(--orange-color-light);
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.cart-remove-btn i{
+  margin-right: 5px;
+}
+.cart-remove-btn:hover {
+  
+  background:var(--orange-color);
+}
+.cart-item-error {
+  color: #d9534f !important;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+@media (max-width: 1100px){
+ 
+  .cart-title{
+    font-size: 1.5rem;
+  }
+  .cart-item-image{
+    width: 60px;
+    height: 60px;
+  }
+  .cart-container {
+    grid-template-columns: 1fr;
+    padding: 0px;
+  }
+
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.5rem;
+    padding: 10px 20px;
+  }
+
+  .cart-item-price,
+  .cart-item-quantity,
+  .cart-remove-btn {
+    grid-column: span 2;
+  }
+
+}

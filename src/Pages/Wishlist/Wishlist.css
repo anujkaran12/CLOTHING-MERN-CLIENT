@@ -1,0 +1,43 @@
+.wishlist-container {
+  padding: 2rem;
+  max-width: 1400px;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.wishlist-head {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+.empty-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.wishlist-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+
+
+.remove-btn:hover {
+  background: #e63b3b;
+}
+
+@media (max-width: 600px) {
+  .wishlist-details h3 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+}

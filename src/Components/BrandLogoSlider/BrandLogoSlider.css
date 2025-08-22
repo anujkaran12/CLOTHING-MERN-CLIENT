@@ -1,0 +1,42 @@
+.brand-slider-container {
+    overflow: hidden;
+    margin: 50px 0;
+  }
+  
+  .brand-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* animation: slide 20s linear infinite; */
+  }
+  
+  .brand-logo {
+    flex-shrink: 0;
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .brand-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .brand-logo img:hover {
+    opacity: 1;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

@@ -1,0 +1,109 @@
+/* Fullscreen overlay */
+.common-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+/* Modal box */
+.common-overlay-box {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  animation: common-overlay-fadeIn 0.25s ease-out;
+}
+
+/* Title */
+.common-overlay-box h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+/* Message */
+.common-overlay-box p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Actions row */
+.common-overlay-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.common-overlay-btn {
+  flex: 1;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Cancel Button */
+.common-overlay-cancel {
+  background: #f3f4f6;   /* light gray */
+  color: #374151;        /* neutral text */
+  border: 1px solid #d1d5db;
+}
+.common-overlay-cancel:hover {
+  background: #e5e7eb;
+  border-color: #cbd5e1;
+}
+
+/* Confirm Button */
+.common-overlay-confirm {
+  background: #000000e9;   /* emerald green */
+  color: #fff;
+  border: 1px solid #000000e9;
+}
+.common-overlay-confirm:hover {
+  background: #000000;   /* darker green */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .common-overlay-box {
+    padding: 1.25rem;
+  }
+  .common-overlay-actions {
+    flex-direction: column;
+  }
+  .common-overlay-btn {
+    width: 100%;
+  }
+}
+
+/* Fade in animation */
+@keyframes common-overlay-fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

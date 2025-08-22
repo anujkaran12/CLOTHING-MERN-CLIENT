@@ -1,0 +1,134 @@
+.user-orders-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 24px; */
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.user-orders-container h1{
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+.user-order-card {
+  background: #fff;
+  /* border-radius: 16px; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 10px 20px;
+  /* box-shadow: 0 8px 20px rgba(0,0,0,0.1); */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Needed for absolute positioning of status */
+}
+.user-order-card:last-child{
+    border-bottom: 0;
+}
+
+
+
+.user-order-date p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0;
+  text-align: right;
+}
+
+.user-order-address h4 {
+  margin-bottom: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user-order-address p {
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.user-order-product {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.user-order-image {
+  width: 100px;
+  /* height: 100px; */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.user-order-product-info h5 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.user-order-product-info p {
+  margin: 6px 0;
+  font-size: 0.8rem;
+  color: #444;
+  font-weight: 400;
+}
+
+.user-order-product-info span {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+/* Status positioned at bottom-right corner */
+.user-order-status {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-transform: capitalize;
+}
+
+.user-status-pending {
+  color: #f39c12 !important;
+}
+
+.user-status-shipped {
+  color: #3498db !important ;
+}
+
+.user-status-delivered {
+  color: #27ae60 !important;
+}
+
+.user-status-cancelled {
+  color: #e74c3c !important;
+}
+
+@media (max-width: 800px) {
+  .user-orders-container{
+    padding: 10px;
+  }
+  .user-order-product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .user-order-image {
+    width: 100px;
+    height: 100px;
+  }
+  .user-order-date p {
+    text-align: left;
+  }
+  .user-order-status {
+    right: 12px;
+    bottom: 8px;
+  }
+}

@@ -1,0 +1,224 @@
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 2rem;
+
+}
+.profile-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-image-section {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  width: 120px;
+  
+  
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-icon-profile {
+  position: absolute;
+  bottom: 10px;          /* stick to bottom of the circle */
+  right: 10px;           /* stick to right of the circle */
+  transform: translate(30%, 30%); /* push a bit outside the border */
+  background: rgb(38, 38, 38);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.edit-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 18px;
+  color:white;
+  border: 0;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: .85rem;
+  background-color: transparent;
+  transition: background 0.3s ease;
+  background-color: rgb(38, 38, 38);
+}
+
+.edit-btn:active {
+  transform: translate(0px,2px)
+}
+.edit-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 0px 0px;
+  transform: translate(0px,-2px);
+  
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px 300px);
+  gap: 20px;
+}
+
+.input-group-profile {
+  position: relative;
+}
+
+.input-group-profile input {
+  width: 100%;
+  padding: 14px 10px;
+  font-size: 16px;
+  border: 1px solid #00000042;
+  outline: none;
+  background: transparent;
+  color: #333;
+  border-radius: 30px;
+}
+
+.input-group-profile label {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #888;
+  background: var(--background-color);
+  padding: 0 4px;
+  font-size: 16px;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.input-group-profile input:focus + label,
+.input-group-profile input:not(:placeholder-shown) + label {
+  top: -6px;
+  left: 10px;
+  font-size: 12px;
+  color: rgb(31, 105, 216);
+}
+
+.button-group {
+  grid-column: span 2;
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 8px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px 0px;
+}
+
+.button-group button:active {
+  transform: translate(2px,2px);
+}
+
+.button-group .save {
+  background-color: #1c5ec2;
+  color: white;
+  border: 1px solid #1c5ec2;
+}
+
+.button-group .cancel {
+  color: var(--orange-color-light);
+  border: 1px solid var(--orange-color-light);
+}
+
+.button-group .cancel:hover {
+  background-color: var(--orange-color);
+  color: #fff;
+}
+
+.profile-info-section {
+  margin-top: 1rem;
+}
+
+.profile-display {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-display h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  word-wrap: break-word;
+}
+
+.profile-display p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.1;
+  max-width: 300px;
+}
+
+.orders-btn {
+  margin-top: 20px;
+  padding: 13px 22px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  background-color: rgb(38, 38, 38);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.orders-btn:hover {
+  transform: translate(0px, -2px);
+}
+
+.orders-btn:active {
+  transform: translate(0px, 2px);
+}
+
+@media (max-width:768px) {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile-display h3 {
+    font-size: 1.5rem;
+  }
+
+  .profile-card {
+    flex-direction: column;
+  }
+}
