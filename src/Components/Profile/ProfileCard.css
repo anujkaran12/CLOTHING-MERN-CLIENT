@@ -9,7 +9,9 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   /* min-width: 100%; */
-  width: fit-content;
+  min-width: fit-content;
+  min-height: fit-content;
+  width: 550px;
   height: fit-content;
 }
 .profile-content {
