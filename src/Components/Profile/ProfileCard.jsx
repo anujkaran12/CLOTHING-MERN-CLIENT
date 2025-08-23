@@ -5,21 +5,18 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loading from "../Utility/Loading/Loading";
-
+import { useDispatch } from "react-redux";
+import { fetchUserData } from "../../redux/userSlice";
 const ProfileCard = ({ userData }) => {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [profile, setProfile] = useState({
-    fullName: userData.fullName,
-    email: userData.email,
-    mobile: userData.mobile,
-    avatar: userData.avatar,
-    address: userData.address,
-  });
+  const [profile, setProfile] = useState(userData);
 
   const [tempProfile, setTempProfile] = useState(profile);
   const [previewPic, setPreviewPic] = useState(profile.avatar?.secure_url);
   const fileInputRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,8 +54,17 @@ const ProfileCard = ({ userData }) => {
     const keys1 = Object.keys(obj1);
     const keys2 = Object.keys(obj2);
     if (keys1.length !== keys2.length) return false;
+
     for (let key of keys1) {
-      if (obj1[key].toString().trim() !== obj2[key].toString().trim()) return false;
+      const val1 = obj1[key] ?? ""; // default to empty string if undefined
+      const val2 = obj2[key] ?? "";
+
+      // handle objects differently (like avatar File or URL object)
+      if (typeof val1 === "object" || typeof val2 === "object") {
+        if (JSON.stringify(val1) !== JSON.stringify(val2)) return false;
+      } else {
+        if (val1.toString().trim() !== val2.toString().trim()) return false;
+      }
     }
     return true;
   };
@@ -95,6 +101,7 @@ const ProfileCard = ({ userData }) => {
       );
       setEditing(false);
       toast.success("Profile update successfully");
+      await dispatch(fetchUserData());
     } catch (error) {
       toast.error(error.response?.data || "Network error");
     }
