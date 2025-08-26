@@ -29,7 +29,7 @@ const Home = () => {
     if (productsData.length === 0) {
       dispatch(fetchAllProducts());
     }
-  }, [dispatch, productsData.length]);
+  }, []);
 
   return (
     <div className="home">

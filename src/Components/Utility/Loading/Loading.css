@@ -13,12 +13,13 @@ height: 50vh;
 }
 
 .loader {
-  width: 110px;
+  width: 90px;
   /* height: 90px; */
-padding: 5px;
+padding: 8px;
 aspect-ratio: 1;
   border-radius: 50%;
-  background: #333;
+  background: #0056b3;
+  
   --_m: 
     conic-gradient(#0000 30%,#000),
     linear-gradient(#000 0 0) content-box;
@@ -39,8 +40,8 @@ aspect-ratio: 1;
 
 @media (max-width: 900px) {
     .loader{
-        width: 70px;
-        height:70px;
+        width: 60px;
+        height:60px;
         padding:6px
     }
     .loading-container{
