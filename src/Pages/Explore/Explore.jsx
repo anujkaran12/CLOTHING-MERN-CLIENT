@@ -27,7 +27,7 @@ const Explore = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const { wishlistProducts } = useSelector((state) => state.wishlistReducer);
+  const { wishlistProducts,loading:wishlistLoading } = useSelector((state) => state.wishlistReducer);
   const { productsData, error, loading } = useSelector(
     (state) => state.productsReducer
   );
@@ -101,7 +101,7 @@ const Explore = () => {
           <div className="explore-header">
             <input
               type="search"
-              placeholder="Search products..."
+              placeholder="Search for anything..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="explore-search-bar"
@@ -265,6 +265,7 @@ const Explore = () => {
                     onAddToWishlist={onAddToWishlist}
                     alreadyInWishlist={isInWishlist}
                     handleRemoveFromWishlist={handleRemoveFromWishlist}
+                    wishlistLoading={wishlistLoading}
                   />
                 );
               })}

@@ -15,7 +15,7 @@ height: 50vh;
 .loader {
   width: 100px;
   /* height: 90px; */
-padding: 6px;
+padding: 4px;
 aspect-ratio: 1;
   border-radius: 50%;
   background: #0a6ad1;

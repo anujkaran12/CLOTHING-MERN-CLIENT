@@ -35,7 +35,6 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       {/* Logo */}
-      <div className="nav-logo">WEAR LOOM</div>
 
       <div className={`nav-categories ${menuOpen ? "active" : ""}`}>
         <Link to="/Explore?cat=all" onClick={closeMenu}>
@@ -54,6 +53,7 @@ const Navbar = () => {
         </Link>
        
       </div>
+      <div className="nav-logo" onClick={()=>{navigate('/')}}>WILD<br/>STITCH</div>
 
       {/* Hamburger */}
       <div

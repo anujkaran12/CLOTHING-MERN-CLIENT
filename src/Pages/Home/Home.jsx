@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Home.css";
-import img from "../../Assets/00.jpg";
+import img from "../../Assets/hero.jpg";
 import grid_1_img from "../../Assets/01.jpg";
 import grid_2_img from "../../Assets/02.jpg";
 import grid_3_img from "../../Assets/03.jpg";
@@ -10,6 +10,7 @@ import { fetchAllProducts } from "../../redux/productsSlice";
 import Loading from "../../Components/Utility/Loading/Loading";
 import CommonError from "../../Components/Utility/ErrorStates/CommonError";
 import ItemCard from "../../Components/ItemCard/ItemCard";
+import { useNavigate } from "react-router-dom";
 
 // Grid images with overlay text
 const gridImages = [
@@ -23,6 +24,7 @@ const Home = () => {
   const { productsData, loading, error } = useSelector(
     (state) => state.productsReducer
   );
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,22 +41,20 @@ const Home = () => {
         <div className="home-hero-overlay"></div>
         <div className="home-hero-text">
           <h1 className="typing-text">Minimal & Bold</h1>
-          <p className="hero-subtitle">
-            Latest Fashion Trends for Men, Women & Kids
-          </p>
+        
           <p className="hero-desc">
             Find your perfect style from our curated collection. Fashion that
             speaks your personality.
           </p>
           <div className="hero-buttons">
-            <button className="hero-btn">Shop Now</button>
+            <button className="hero-btn" onClick={()=>navigate('/explore')}>Shop Now</button>
           </div>
         </div>
-      </section>
 
       {/* Moving Announcement Bar */}
       <section className="moving-text">
         <span>✨ Big Sale is Live Now! | Free Shipping on Orders Above ₹999 | New Collection Just Dropped ✨</span>
+      </section>
       </section>
 
       {/* Products Section */}

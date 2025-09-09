@@ -11,7 +11,7 @@ const Auth = () => {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        <h1>WEAR LOOM</h1>
+        {/* <h1>WILD <br /> STITCH</h1> */}
         <div className="auth-form">
           {loginForm ? <Login /> : <Register setLoginForm={setLoginForm} setShowGoogleBtn={setShowGoogleBtn}/>}
 
