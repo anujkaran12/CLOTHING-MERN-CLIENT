@@ -69,17 +69,17 @@
 .single-product-description {
   font-size: 1rem;
   color: #555;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   line-height: 1.6;
   text-transform: capitalize;
 }
 
 .single-product-price {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   
   color: #cf2929;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 .single-product-price del{
   color: #aeaeae;
@@ -200,8 +200,8 @@
 }
 
 .related-products-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 600;
   color: #333;
   margin-bottom: 5px;
   text-transform: capitalize;
@@ -209,7 +209,7 @@
 
 .related-products-subtitle {
   font-size: 1rem;
-  color: #555;
+  color: #999;
   margin-bottom: 3rem;
 }
 
