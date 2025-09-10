@@ -22,21 +22,23 @@ const ItemCard = ({
           loading="lazy"
           onClick={() => navigate(`/explore/${item._id}`)}
         />
-        <button
-          className="hover-button"
-          disabled={wishlistLoading}
-          onClick={() => {
-            alreadyInWishlist
-              ? handleRemoveFromWishlist(item._id)
-              : onAddToWishlist(item._id);
-          }}
-        >
-          {wishlistLoading
-            ? "LOADING..."
-            : alreadyInWishlist
-            ? "REMOVE FROM WISHLIST"
-            : "ADD TO WISHLIST"}
-        </button>
+        {(onAddToWishlist || handleRemoveFromWishlist) && (
+          <button
+            className="hover-button"
+            disabled={wishlistLoading}
+            onClick={() => {
+              alreadyInWishlist
+                ? handleRemoveFromWishlist(item._id)
+                : onAddToWishlist(item._id);
+            }}
+          >
+            {wishlistLoading
+              ? "LOADING..."
+              : alreadyInWishlist
+              ? "REMOVE FROM WISHLIST"
+              : "ADD TO WISHLIST"}
+          </button>
+        )}
       </div>
       <div className="itemCard-container-content">
         <h5 className="capitalized">{item.brand}</h5>

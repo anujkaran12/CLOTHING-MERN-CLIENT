@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-wrapper">
         
         {/* Logo */}
-        <div className="footer-logo">WEARLOOM</div>
+        <div className="footer-logo">WILD STITCH</div>
 
         {/* Navigation */}
         <nav className="footer-nav">
@@ -36,7 +36,7 @@ const Footer = () => {
 
       {/* Bottom text */}
       <div className="footer-bottom">
-        © {new Date().getFullYear()} ShopSmart — All Rights Reserved
+        © {new Date().getFullYear()} WILD STITCH — All Rights Reserved
       </div>
     </footer>
   );

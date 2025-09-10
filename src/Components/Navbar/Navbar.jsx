@@ -9,20 +9,25 @@ import { fetchWishlist, setWishlist } from "../../redux/wishlistSlice";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+
   const dispatch = useDispatch();
   const { showConfirmation } = useConfirmation();
-
   const { userData } = useSelector((s) => s.userReducer);
   const { cartProducts } = useSelector((s) => s.cartReducer);
   const { wishlistProducts } = useSelector((s) => s.wishlistReducer);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
-  const navigate = useNavigate();
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setDropdownOpen(null);
+  };
 
   const handleLogout = useCallback(async () => {
     dispatch(logout());
@@ -30,30 +35,72 @@ const Navbar = () => {
     dispatch(setCart([]));
     dispatch(setWishlist([]));
     navigate("/");
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <div className="navbar-container">
-      {/* Logo */}
-
+      {/* Categories (left) */}
       <div className={`nav-categories ${menuOpen ? "active" : ""}`}>
         <Link to="/Explore?cat=all" onClick={closeMenu}>
           All
         </Link>
-        <Link to="/Explore?cat=men" onClick={closeMenu}>
-          Men
-        </Link>
-        
-        <Link to="/Explore?cat=women" onClick={closeMenu}>
-          Women
-        </Link>
-        
-        <Link to="/Explore?cat=kid" onClick={closeMenu}>
-          Kids
-        </Link>
-       
+
+        {/* Men Dropdown */}
+        <div
+          className="nav-dropdown"
+          onMouseEnter={() => setDropdownOpen("men")}
+          onMouseLeave={() => setDropdownOpen(null)}
+        >
+          <Link to="/Explore?cat=men" onClick={closeMenu}>Men</Link>
+          {dropdownOpen === "men" && (
+            <div className="dropdown-menu">
+              <Link to="/Explore?cat=men&sub=shirts" onClick={closeMenu}>Shirts</Link>
+              <Link to="/Explore?cat=men&sub=jeans" onClick={closeMenu}>Jeans</Link>
+              <Link to="/Explore?cat=men&sub=shoes" onClick={closeMenu}>Shoes</Link>
+              <Link to="/Explore?cat=men&sub=accessories" onClick={closeMenu}>Accessories</Link>
+            </div>
+          )}
+        </div>
+
+        {/* Women Dropdown */}
+        <div
+          className="nav-dropdown"
+          onMouseEnter={() => setDropdownOpen("women")}
+          onMouseLeave={() => setDropdownOpen(null)}
+        >
+          <Link to="/Explore?cat=women" onClick={closeMenu}>Women</Link>
+          {dropdownOpen === "women" && (
+            <div className="dropdown-menu">
+              <Link to="/Explore?cat=women&sub=dresses" onClick={closeMenu}>Dresses</Link>
+              <Link to="/Explore?cat=women&sub=tops" onClick={closeMenu}>Tops</Link>
+              <Link to="/Explore?cat=women&sub=heels" onClick={closeMenu}>Heels</Link>
+              <Link to="/Explore?cat=women&sub=jewellery" onClick={closeMenu}>Jewellery</Link>
+            </div>
+          )}
+        </div>
+
+        {/* Kids Dropdown */}
+        <div
+          className="nav-dropdown"
+          onMouseEnter={() => setDropdownOpen("kids")}
+          onMouseLeave={() => setDropdownOpen(null)}
+        >
+          <Link to="/Explore?cat=kids" onClick={closeMenu}>Kids</Link>
+          {dropdownOpen === "kids" && (
+            <div className="dropdown-menu">
+              <Link to="/Explore?cat=kids&sub=tshirts" onClick={closeMenu}>T-Shirts</Link>
+              <Link to="/Explore?cat=kids&sub=shorts" onClick={closeMenu}>Shorts</Link>
+              <Link to="/Explore?cat=kids&sub=shoes" onClick={closeMenu}>Shoes</Link>
+              <Link to="/Explore?cat=kids&sub=toys" onClick={closeMenu}>Toys</Link>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="nav-logo" onClick={()=>{navigate('/')}}>WILD<br/>STITCH</div>
+
+      {/* Logo */}
+      <div className="nav-logo" onClick={() => navigate("/")}>
+        WILD <br /> STITCH
+      </div>
 
       {/* Hamburger */}
       <div
@@ -65,13 +112,29 @@ const Navbar = () => {
         <div></div>
       </div>
 
-      {/* Navigation Links */}
+      {/* Navigation Links (right) */}
       <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
         <li onClick={closeMenu}>
           <Link to="/">Home</Link>
         </li>
-        <li onClick={closeMenu}>
+
+        {/* Shop Dropdown */}
+        <li
+          className="nav-dropdown"
+          onMouseEnter={() => setDropdownOpen("shop")}
+          onMouseLeave={() => setDropdownOpen(null)}
+          onClick={closeMenu}
+        >
           <Link to="/Explore">Shop</Link>
+          {dropdownOpen === "shop" && (
+            <div className="dropdown-menu">
+              <Link to="/Explore?cat=men" onClick={closeMenu}>Men</Link>
+              <Link to="/Explore?cat=women" onClick={closeMenu}>Women</Link>
+              <Link to="/Explore?cat=kids" onClick={closeMenu}>Kids</Link>
+              <Link to="/Explore?cat=new" onClick={closeMenu}>New Arrivals</Link>
+              <Link to="/Explore?cat=sale" onClick={closeMenu}>Sale</Link>
+            </div>
+          )}
         </li>
 
         {userData?.role === "seller" && (
@@ -79,6 +142,7 @@ const Navbar = () => {
             <Link to="/seller">Seller Dashboard</Link>
           </li>
         )}
+
         {(!userData || userData.role === "buyer") && (
           <>
             <li onClick={closeMenu}>
@@ -89,6 +153,7 @@ const Navbar = () => {
             </li>
           </>
         )}
+
         <li onClick={closeMenu}>
           <Link to="/Profile">Profile</Link>
         </li>
