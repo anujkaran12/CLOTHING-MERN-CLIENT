@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { fetchUserData, logout } from "../../redux/userSlice";
 import { useConfirmation } from "../../Context/OverlayContext";
@@ -18,6 +18,7 @@ const Navbar = () => {
   const { wishlistProducts } = useSelector((s) => s.wishlistReducer);
 
   const navigate = useNavigate();
+  const {pathname} = useLocation();
 
   useEffect(() => {
     dispatch(fetchUserData());
@@ -38,7 +39,7 @@ const Navbar = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className="navbar-container">
+    <div className={`navbar-container ${pathname=='/' && "nav-fixed"}`}>
       {/* Categories (left) */}
       <div className={`nav-categories ${menuOpen ? "active" : ""}`}>
         <Link to="/Explore?cat=all" onClick={closeMenu}>
@@ -51,13 +52,23 @@ const Navbar = () => {
           onMouseEnter={() => setDropdownOpen("men")}
           onMouseLeave={() => setDropdownOpen(null)}
         >
-          <Link to="/Explore?cat=men" onClick={closeMenu}>Men</Link>
+          <Link to="/Explore?cat=men" onClick={closeMenu}>
+            Men
+          </Link>
           {dropdownOpen === "men" && (
             <div className="dropdown-menu">
-              <Link to="/Explore?cat=men&sub=shirts" onClick={closeMenu}>Shirts</Link>
-              <Link to="/Explore?cat=men&sub=jeans" onClick={closeMenu}>Jeans</Link>
-              <Link to="/Explore?cat=men&sub=shoes" onClick={closeMenu}>Shoes</Link>
-              <Link to="/Explore?cat=men&sub=accessories" onClick={closeMenu}>Accessories</Link>
+              <Link to="/Explore?cat=men&sub=shirts" onClick={closeMenu}>
+                Shirts
+              </Link>
+              <Link to="/Explore?cat=men&sub=jeans" onClick={closeMenu}>
+                Jeans
+              </Link>
+              <Link to="/Explore?cat=men&sub=shoes" onClick={closeMenu}>
+                Shoes
+              </Link>
+              <Link to="/Explore?cat=men&sub=accessories" onClick={closeMenu}>
+                Accessories
+              </Link>
             </div>
           )}
         </div>
@@ -68,13 +79,23 @@ const Navbar = () => {
           onMouseEnter={() => setDropdownOpen("women")}
           onMouseLeave={() => setDropdownOpen(null)}
         >
-          <Link to="/Explore?cat=women" onClick={closeMenu}>Women</Link>
+          <Link to="/Explore?cat=women" onClick={closeMenu}>
+            Women
+          </Link>
           {dropdownOpen === "women" && (
             <div className="dropdown-menu">
-              <Link to="/Explore?cat=women&sub=dresses" onClick={closeMenu}>Dresses</Link>
-              <Link to="/Explore?cat=women&sub=tops" onClick={closeMenu}>Tops</Link>
-              <Link to="/Explore?cat=women&sub=heels" onClick={closeMenu}>Heels</Link>
-              <Link to="/Explore?cat=women&sub=jewellery" onClick={closeMenu}>Jewellery</Link>
+              <Link to="/Explore?cat=women&sub=dresses" onClick={closeMenu}>
+                Dresses
+              </Link>
+              <Link to="/Explore?cat=women&sub=tops" onClick={closeMenu}>
+                Tops
+              </Link>
+              <Link to="/Explore?cat=women&sub=heels" onClick={closeMenu}>
+                Heels
+              </Link>
+              <Link to="/Explore?cat=women&sub=jewellery" onClick={closeMenu}>
+                Jewellery
+              </Link>
             </div>
           )}
         </div>
@@ -85,13 +106,23 @@ const Navbar = () => {
           onMouseEnter={() => setDropdownOpen("kids")}
           onMouseLeave={() => setDropdownOpen(null)}
         >
-          <Link to="/Explore?cat=kids" onClick={closeMenu}>Kids</Link>
+          <Link to="/Explore?cat=kids" onClick={closeMenu}>
+            Kids
+          </Link>
           {dropdownOpen === "kids" && (
             <div className="dropdown-menu">
-              <Link to="/Explore?cat=kids&sub=tshirts" onClick={closeMenu}>T-Shirts</Link>
-              <Link to="/Explore?cat=kids&sub=shorts" onClick={closeMenu}>Shorts</Link>
-              <Link to="/Explore?cat=kids&sub=shoes" onClick={closeMenu}>Shoes</Link>
-              <Link to="/Explore?cat=kids&sub=toys" onClick={closeMenu}>Toys</Link>
+              <Link to="/Explore?cat=kids&sub=tshirts" onClick={closeMenu}>
+                T-Shirts
+              </Link>
+              <Link to="/Explore?cat=kids&sub=shorts" onClick={closeMenu}>
+                Shorts
+              </Link>
+              <Link to="/Explore?cat=kids&sub=shoes" onClick={closeMenu}>
+                Shoes
+              </Link>
+              <Link to="/Explore?cat=kids&sub=toys" onClick={closeMenu}>
+                Toys
+              </Link>
             </div>
           )}
         </div>
@@ -128,11 +159,21 @@ const Navbar = () => {
           <Link to="/Explore">Shop</Link>
           {dropdownOpen === "shop" && (
             <div className="dropdown-menu">
-              <Link to="/Explore?cat=men" onClick={closeMenu}>Men</Link>
-              <Link to="/Explore?cat=women" onClick={closeMenu}>Women</Link>
-              <Link to="/Explore?cat=kids" onClick={closeMenu}>Kids</Link>
-              <Link to="/Explore?cat=new" onClick={closeMenu}>New Arrivals</Link>
-              <Link to="/Explore?cat=sale" onClick={closeMenu}>Sale</Link>
+              <Link to="/Explore?cat=men" onClick={closeMenu}>
+                Men
+              </Link>
+              <Link to="/Explore?cat=women" onClick={closeMenu}>
+                Women
+              </Link>
+              <Link to="/Explore?cat=kids" onClick={closeMenu}>
+                Kids
+              </Link>
+              <Link to="/Explore?cat=new" onClick={closeMenu}>
+                New Arrivals
+              </Link>
+              <Link to="/Explore?cat=sale" onClick={closeMenu}>
+                Sale
+              </Link>
             </div>
           )}
         </li>

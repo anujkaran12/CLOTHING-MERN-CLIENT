@@ -4,11 +4,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.8rem;
-  background-color: var(--background-color);
+  background-color: transparent;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
+}
+
+.nav-fixed{
+  position: fixed;
+  background-color: #0000001c;
 }
 
 /* Logo */
@@ -16,7 +21,7 @@
   font-family: 'Raleway', sans-serif !important;
   font-size: 1.4rem;
   font-weight: 900;
-  color: #333;
+  
   letter-spacing: 3px;
   line-height: 1;
   cursor: pointer;
@@ -146,9 +151,7 @@
   
 }
 
-.dropdown-menu a:hover {
-  /* background-color: rgba(0, 0, 0, 0.05); */
-}
+
 
 /* Responsive Styles */
 @media (max-width: 1000px) {

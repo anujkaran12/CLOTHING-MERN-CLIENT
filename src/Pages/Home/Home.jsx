@@ -52,14 +52,14 @@ const Home = () => {
         </div>
 
       {/* Moving Announcement Bar */}
-      <section className="moving-text">
+      {/* <section className="moving-text">
         <span>✨ Big Sale is Live Now! | Free Shipping on Orders Above ₹999 | New Collection Just Dropped ✨</span>
-      </section>
+      </section> */}
       </section>
 
       {/* Products Section */}
       <section className="home-products">
-        <h2 className="section-heading">Featured Products</h2>
+        <h2 className="section-heading">FEATURED PRODUCTS</h2>
         {loading ? (
           <Loading />
         ) : error ? (
@@ -74,7 +74,10 @@ const Home = () => {
       </section>
 
       {/* 2x2 Image Grid with Text */}
+      <div>
+        <h2 className="section-heading">UPCOMING COLLECTIONS</h2>
       <section className="home-grid">
+          
         {gridImages.map((grid, index) => (
           <div key={index} className="home-grid-item">
             <img src={grid.img} alt={grid.text} loading="lazy" />
@@ -82,6 +85,7 @@ const Home = () => {
           </div>
         ))}
       </section>
+      </div>
     </div>
   );
 };
