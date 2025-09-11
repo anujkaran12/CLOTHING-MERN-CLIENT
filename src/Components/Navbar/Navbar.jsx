@@ -18,7 +18,7 @@ const Navbar = () => {
   const { wishlistProducts } = useSelector((s) => s.wishlistReducer);
 
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(fetchUserData());
@@ -39,7 +39,7 @@ const Navbar = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className={`navbar-container ${pathname=='/' && "nav-fixed"}`}>
+    <div className={`navbar-container ${pathname === "/" && "nav-fixed"}`}>
       {/* Categories (left) */}
       <div className={`nav-categories ${menuOpen ? "active" : ""}`}>
         <Link to="/Explore?cat=all" onClick={closeMenu}>
@@ -130,7 +130,12 @@ const Navbar = () => {
 
       {/* Logo */}
       <div className="nav-logo" onClick={() => navigate("/")}>
-        WILD <br /> STITCH
+        <img
+          src="/LOGO_BLACK_TRANS.png"
+          alt="Wild Stitch Logo"
+          className="logo-image"
+        />
+        <span className="logo-text">WILD STITCH</span>
       </div>
 
       {/* Hamburger */}
@@ -212,11 +217,13 @@ const Navbar = () => {
               );
             }}
           >
-            <Link className="logout-btn">Logout</Link>
+            <button className="nav-btn logout-btn">Logout</button>
           </li>
         ) : (
           <li onClick={closeMenu}>
-            <Link to="/Auth">Login</Link>
+            <Link to="/Auth">
+              <button className="nav-btn login-btn">Login</button>
+            </Link>
           </li>
         )}
       </ul>

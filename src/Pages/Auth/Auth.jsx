@@ -5,26 +5,38 @@ import Register from "./Register";
 import Login from "./Login";
 import GoogleSignup from "../../utility/GoogleSignup";
 
+
 const Auth = () => {
   const [loginForm, setLoginForm] = useState(true);
-  const [showGoogleBtn,setShowGoogleBtn] = useState(true)
+  const [showGoogleBtn, setShowGoogleBtn] = useState(true);
+
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
-        {/* <h1>WILD <br /> STITCH</h1> */}
-        <div className="auth-form">
-          {loginForm ? <Login /> : <Register setLoginForm={setLoginForm} setShowGoogleBtn={setShowGoogleBtn}/>}
+        {/* Logo */}
+        <div className="auth-logo">
+          <img src="/LOGO_BLACK_TRANS.png" alt="Wild Stitch Logo" />
+          <h1>WILD STITCH</h1>
+        </div>
 
-          <>
-           { showGoogleBtn && <GoogleSignup />}
-            <div className="toggle-form">
-              <p onClick={() => setLoginForm(!loginForm)}>
-                {loginForm
-                  ? <p>Create an account | Register!</p>
-                  : <p onClick={()=>setShowGoogleBtn(true)}>Already have an account? Sign in</p>}
-              </p>
-            </div>
-          </>
+        {/* Form */}
+        <div className="auth-form">
+          
+          {loginForm ? (
+            <Login />
+          ) : (
+            <Register setLoginForm={setLoginForm} setShowGoogleBtn={setShowGoogleBtn} />
+          )}
+
+          {showGoogleBtn && <GoogleSignup />}
+
+          <div className="toggle-form">
+            <p onClick={() => setLoginForm(!loginForm)}>
+              {loginForm
+                ? "Create an account | Register!"
+                : "Already have an account? Sign in"}
+            </p>
+          </div>
         </div>
       </div>
     </div>

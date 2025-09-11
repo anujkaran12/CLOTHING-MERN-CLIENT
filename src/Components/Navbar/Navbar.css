@@ -13,21 +13,32 @@
 
 .nav-fixed{
   position: fixed;
-  background-color: #0000001c;
+  background-color: #ffffff1c;
 }
 
 /* Logo */
 .nav-logo {
-  font-family: 'Raleway', sans-serif !important;
-  font-size: 1.4rem;
-  font-weight: 900;
-  
-  letter-spacing: 3px;
-  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
-  text-align: center;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.05);
 }
+
+.nav-logo img.logo-image {
+  height: 40px;
+  object-fit: contain;
+}
+
+.nav-logo .logo-text {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: .8rem;
+  margin-top: 5px;
+  color: #111;
+  text-align: center;
+}
+
 
 /* Categories in center */
 .nav-categories {
@@ -95,29 +106,53 @@
   font-weight: 400;
 }
 
-.nav-links li a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #ddd;
-  transition: width 0.3s ease;
-}
 
-.nav-links li:hover a::after {
-  width: 100%;
-}
 
 .navbar-container ul li a:hover {
   color: #111;
+  
 }
 
-.logout-btn {
-  color: rgb(201, 16, 16) !important;
-  font-weight: 600;
+/* Modern Login & Logout Buttons */
+.nav-btn {
+  padding: 0.45rem 1.4rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  letter-spacing: 0.5px;
 }
+
+/* Login Button: Sleek Dark Gradient */
+.login-btn {
+  background: linear-gradient(135deg, #222, #555); /* dark neutral */
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #555, #222);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Logout Button: Deep Red Gradient */
+.logout-btn {
+  background: linear-gradient(135deg, rgb(244, 78, 78), rgb(229, 46, 46)); /* lighter red → deep red */
+  color: #fff;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 8px rgba(201, 16, 16, 0.25);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, rgb(229,46,46), rgb(244,78,78)); /* deeper red on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(150, 10, 10, 0.3);
+}
+
 
 /* Dropdown Styles */
 .nav-dropdown {
@@ -153,14 +188,23 @@
 
 
 
+
 /* Responsive Styles */
 @media (max-width: 1000px) {
-  .nav-logo {
-    font-size: 1.1rem;
+   .nav-logo img.logo-image {
+    height: 30px;
+  }
+
+  .nav-logo .logo-text {
+    
+    font-size: 0.6rem;
+    font-weight: 800;
+    
   }
 
   .navbar-container {
-    padding: .8rem .8rem;
+    padding: .55rem .8rem;
+    background-color: #ffffff66;
   }
 
   .nav-categories {

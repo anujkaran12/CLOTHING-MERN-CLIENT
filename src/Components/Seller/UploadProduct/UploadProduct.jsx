@@ -235,7 +235,7 @@ const UploadProduct = () => {
                 <option value="top">top</option>
                 <option value="pant">pant</option>
                 <option value="t-shirt">t-shirt</option>
-                <option value="jeans">jeans</option>
+               
                 <option value="bottom">bottom</option>
                 <option value="full">full</option>
               </select>

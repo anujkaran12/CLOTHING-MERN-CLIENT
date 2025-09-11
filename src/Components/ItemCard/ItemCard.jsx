@@ -1,5 +1,4 @@
 import "./ItemCard.css";
-
 import { useNavigate } from "react-router-dom";
 
 const ItemCard = ({
@@ -10,6 +9,11 @@ const ItemCard = ({
   wishlistLoading,
 }) => {
   const navigate = useNavigate();
+
+  // Calculate discount percentage if discountPrice exists
+  const discountPercentage = item.discountPrice
+    ? Math.round(((item.price - item.discountPrice) / item.price) * 100)
+    : null;
 
   return (
     <div className="itemCard-container">
@@ -22,6 +26,11 @@ const ItemCard = ({
           loading="lazy"
           onClick={() => navigate(`/explore/${item._id}`)}
         />
+
+        {discountPercentage && (
+          <div className="discount-badge">{discountPercentage}% OFF</div>
+        )}
+
         {(onAddToWishlist || handleRemoveFromWishlist) && (
           <button
             className="hover-button"
@@ -40,22 +49,22 @@ const ItemCard = ({
           </button>
         )}
       </div>
+
       <div className="itemCard-container-content">
         <h5 className="capitalized">{item.brand}</h5>
         <h4 className="capitalized">{item.title}</h4>
         <p>
           {item.discountPrice ? (
             <>
-              <del>Rs.{item.price}</del> &nbsp;Rs.{item.discountPrice}
+              <del>Rs.{item.price}</del> &nbsp; Rs.{item.discountPrice}
             </>
           ) : (
             <>Rs.{item.price}</>
-          )}{" "}
+          )}
         </p>
 
         {(onAddToWishlist || handleRemoveFromWishlist) && (
           <>
-            {" "}
             {!alreadyInWishlist ? (
               <span onClick={() => onAddToWishlist(item._id)}>
                 <i className="bi bi-heart" title="Add to wishlist"></i>
@@ -64,13 +73,12 @@ const ItemCard = ({
               <span onClick={() => handleRemoveFromWishlist(item._id)}>
                 <i
                   className="bi bi-heart-fill itemInCart"
-                  title="ALready in wishlist"
+                  title="Already in wishlist"
                 ></i>
               </span>
             )}
           </>
         )}
-        {/* <button >Add to cart</button> */}
       </div>
     </div>
   );
