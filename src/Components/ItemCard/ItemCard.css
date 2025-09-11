@@ -53,7 +53,7 @@
   font-size: 0.8rem;
   font-weight: 500;
 
-  color: #999;
+  color: #a6a6a6;
   margin-bottom: 5px;
   width: fit-content;
   text-transform: uppercase;
@@ -80,7 +80,7 @@
   color: #cf2929;
 }
 .itemCard-container-content p del {
-  color: #999;
+  color: #a6a6a6;
 }
 .itemCard-container-content span i {
   font-size: 1.15rem;
@@ -134,7 +134,7 @@
   padding: 5px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: 400;
   z-index: 10;
 }
 
@@ -180,7 +180,7 @@
 }
   .discount-badge {
     font-size: 0.7rem;
-    font-weight: normal;
+    font-weight: 500;
     
   }
   .hover-button {
