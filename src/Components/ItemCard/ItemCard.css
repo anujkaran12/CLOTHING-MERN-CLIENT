@@ -53,7 +53,7 @@
   font-size: 0.8rem;
   font-weight: 500;
 
-  color: #a6a6a6;
+  color: #b1b1b1;
   margin-bottom: 5px;
   width: fit-content;
   text-transform: uppercase;
@@ -80,7 +80,7 @@
   color: #cf2929;
 }
 .itemCard-container-content p del {
-  color: #a6a6a6;
+  color: #b1b1b1;
 }
 .itemCard-container-content span i {
   font-size: 1.15rem;
