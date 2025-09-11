@@ -18,7 +18,7 @@ const SingleProduct = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [relatedProducts, setRelatedProducts] = useState([]);
+
   const dispatch = useDispatch();
 
   const fetchProductDetails = async () => {
@@ -128,23 +128,23 @@ const SingleProduct = () => {
                 {product.description}
               </p>
               <p className="single-product-price">
-                
                 {product.discountPrice ? (
                   <>
-                    <del>Rs.{product.price}</del> &nbsp; Rs.{product.discountPrice}
+                    <del>Rs.{product.price}</del> &nbsp; Rs.
+                    {product.discountPrice}
                   </>
                 ) : (
                   <>Rs.{product.price}</>
                 )}
               </p>
-              <p className="single-product-brand">Brand: {product.brand}</p>
+              <p className="single-product-brand">BRAND: <span>{product.brand}</span></p>
               <p className="single-product-material">
-                Material: {product.material}
+                MATERIAL: <span>{product.material}</span>
               </p>
 
               {/* Sizes */}
               <div className="single-product-sizes">
-                <p className="single-product-section-title">Available Sizes:</p>
+                <p className="single-product-section-title">Select Size:</p>
                 <div className="single-product-size-options">
                   {Object.keys(product.sizes).map((size) => (
                     <button
@@ -165,7 +165,6 @@ const SingleProduct = () => {
                     Available Quantity: {product.sizes[selectedSize]}
                   </p>
                 )}
-              </div>
 
               {/* Quantity Selector */}
               {selectedSize && (
@@ -186,14 +185,27 @@ const SingleProduct = () => {
                   </span>
                 </div>
               )}
+              </div>
 
-              <button
-                className="single-product-add-btn"
-                onClick={handlerAddToCart}
-                disabled={!selectedSize || quantity < 1 || isAdding}
-              >
-                {isAdding ? "Adding..." : "Add to Cart"}
-              </button>
+              <div className="single-product-actions">
+                <button
+                  className="single-product-add-btn wishlist-btn"
+                  onClick={() =>
+                    toast.info("Wishlist functionality not yet implemented")
+                  }
+                  disabled={isAdding}
+                >
+                  ADD TO WISHLIST
+                </button>
+
+                <button
+                  className="single-product-add-btn cart-btn"
+                  onClick={handlerAddToCart}
+                  disabled={!selectedSize || quantity < 1 || isAdding}
+                >
+                {isAdding ? "Adding..." : "ADD TO CART"}
+                </button>
+              </div>
 
               {/* Seller Info */}
               <div className="single-product-seller">
