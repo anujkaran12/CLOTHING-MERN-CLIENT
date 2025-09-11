@@ -91,7 +91,7 @@ const SingleProduct = () => {
     const res = wishlistProducts?.filter((item) => item._id === product?._id);
     return res.length !== 0 ? true : false;
   }, [wishlistProducts, product]);
-  console.log(productIsInWishlist);
+  
   const onWishlistHandler = () => {
     if (!userData) {
       return toast.error("Login for add in wishlist");
