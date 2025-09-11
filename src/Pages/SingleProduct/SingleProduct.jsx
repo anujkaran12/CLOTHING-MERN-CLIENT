@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import "./SingleProduct.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { fetchAllProducts } from "../../redux/productsSlice";
 import ItemCard from "../../Components/ItemCard/ItemCard";
+import { addToWishlist, removeFromWishlist } from "../../redux/wishlistSlice";
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState(null);
@@ -46,10 +47,13 @@ const SingleProduct = () => {
   const { productsData, loading: productsDataLoading } = useSelector(
     (state) => state.productsReducer
   );
+  const { wishlistProducts, loading: wishlistLoading } = useSelector(
+    (state) => state.wishlistReducer
+  );
   const [isAdding, setIsAdding] = useState(false);
 
   const handlerAddToCart = useCallback(async () => {
-    if (!userData) return toast.error("Login to add to cart");
+    if (!userData) return toast.error("Login for add to cart");
     if (!selectedSize) return toast.warn("Size must be selected");
     if (quantity === 0) return toast.warn("Enter quantity");
 
@@ -83,6 +87,21 @@ const SingleProduct = () => {
     setQuantity(clamped);
   };
 
+  const productIsInWishlist = useMemo(() => {
+    const res = wishlistProducts?.filter((item) => item._id === product?._id);
+    return res.length !== 0 ? true : false;
+  }, [wishlistProducts, product]);
+  console.log(productIsInWishlist);
+  const onWishlistHandler = () => {
+    if (!userData) {
+      return toast.error("Login for add in wishlist");
+    }
+    if (productIsInWishlist) {
+      return dispatch(removeFromWishlist(product._id));
+    } else {
+      return dispatch(addToWishlist(product._id));
+    }
+  };
   return (
     <div className="single-product-page">
       {loading ? (
@@ -137,7 +156,9 @@ const SingleProduct = () => {
                   <>Rs.{product.price}</>
                 )}
               </p>
-              <p className="single-product-brand">BRAND: <span>{product.brand}</span></p>
+              <p className="single-product-brand">
+                BRAND: <span>{product.brand}</span>
+              </p>
               <p className="single-product-material">
                 MATERIAL: <span>{product.material}</span>
               </p>
@@ -166,36 +187,46 @@ const SingleProduct = () => {
                   </p>
                 )}
 
-              {/* Quantity Selector */}
-              {selectedSize && (
-                <div className="single-product-quantity">
-                  <label htmlFor="single-product-qty">Quantity:</label>
-                  <input
-                    id="single-product-qty"
-                    type="number"
-                    min="1"
-                    max={product.sizes[selectedSize]}
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                    aria-label="Select quantity"
-                  />
-                  <span className="single-product-max-info">
-                    (Max {product.sizes[selectedSize]} for{" "}
-                    {selectedSize.toUpperCase()})
-                  </span>
-                </div>
-              )}
+                {/* Quantity Selector */}
+                {selectedSize && (
+                  <div className="single-product-quantity">
+                    <label htmlFor="single-product-qty">Quantity:</label>
+                    <input
+                      id="single-product-qty"
+                      type="number"
+                      min="1"
+                      max={product.sizes[selectedSize]}
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      aria-label="Select quantity"
+                    />
+                    <span className="single-product-max-info">
+                      (Max {product.sizes[selectedSize]} for{" "}
+                      {selectedSize.toUpperCase()})
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="single-product-actions">
                 <button
                   className="single-product-add-btn wishlist-btn"
-                  onClick={() =>
-                    toast.info("Wishlist functionality not yet implemented")
-                  }
                   disabled={isAdding}
+                  onClick={onWishlistHandler}
                 >
-                  ADD TO WISHLIST
+                  {wishlistLoading ? (
+                    <p>LOADING...</p>
+                  ) : productIsInWishlist ? (
+                    <>
+                      <p>REMOVE FROM WISHLIST</p>
+                      <i className="bi bi-heart-fill"></i>
+                    </>
+                  ) : (
+                    <>
+                      <p>ADD IN WISHLIST</p>
+                      <i className="bi bi-heart"></i>
+                    </>
+                  )}
                 </button>
 
                 <button
@@ -203,7 +234,7 @@ const SingleProduct = () => {
                   onClick={handlerAddToCart}
                   disabled={!selectedSize || quantity < 1 || isAdding}
                 >
-                {isAdding ? "Adding..." : "ADD TO CART"}
+                   {isAdding ? "Adding..." : <><p>ADD TO CART</p><i className="bi bi-cart4"></i></>}
                 </button>
               </div>
 
@@ -232,8 +263,8 @@ const SingleProduct = () => {
                 Discover similar products you might like
               </p>
               <div className="related-products-grid">
-                {productsData.slice(0, 4).map((item) => (
-                  <ItemCard item={item} />
+                {productsData.slice(0, 4).map((item, index) => (
+                  <ItemCard key={index} item={item} />
                 ))}
               </div>
             </div>

@@ -72,7 +72,7 @@ const ItemCard = ({
             ) : (
               <span onClick={() => handleRemoveFromWishlist(item._id)}>
                 <i
-                  className="bi bi-heart-fill itemInCart"
+                  className="bi bi-heart-fill itemInWishlist"
                   title="Already in wishlist"
                 ></i>
               </span>
