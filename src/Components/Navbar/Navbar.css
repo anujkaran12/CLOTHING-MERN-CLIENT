@@ -197,8 +197,8 @@
 
   .nav-logo .logo-text {
     
-    font-size: 0.6rem;
-    font-weight: 800;
+    font-size: 0.8rem;
+    font-weight: 600;
     
   }
 
@@ -222,10 +222,15 @@
     row-gap: 1.5rem;
     display: none;
   }
+  .navbar-container ul li{
+    width: 100%;
+    text-align: center;
+  }
 
   .navbar-container ul li a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 400;
+    width: 100%;
   }
 
   .navbar-container ul.active {
@@ -237,6 +242,10 @@
   .hamburger {
     display: flex;
   }
-
+.nav-btn{
+  width: 100%;
+  padding: .75rem;
+  font-size: 1rem;
+}
 
 }

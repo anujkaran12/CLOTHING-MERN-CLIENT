@@ -51,10 +51,10 @@
 
 .itemCard-container-content h5 {
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 500;
 
-  color: #888;
-  margin-bottom: 7px;
+  color: #999;
+  margin-bottom: 5px;
   width: fit-content;
   text-transform: uppercase;
   overflow: hidden;
@@ -68,7 +68,7 @@
   font-size: 0.85rem;
   color: #111;
   overflow: hidden;
-  font-weight: 500;
+  font-weight: 400;
   display: -webkit-box;
   -webkit-line-clamp: 1; /* Truncates text after 3 lines */
   -webkit-box-orient: vertical;
@@ -138,14 +138,16 @@
   z-index: 10;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 980px) {
 
   .itemCard-container-img {
     /* height: 320px; */
     overflow: hidden;
   }
-  .itemCard-container-content h4 {
-    font-weight: 400;
+  
+  .itemCard-container {
+    width: 290px;
+   
   }
 }
 @media (max-width: 768px) {
@@ -160,7 +162,22 @@
   .itemCard-container-content {
     padding-bottom: 1.3rem;
     padding-top: 0.8rem;
+    padding-right: 10px;
   }
+  .itemCard-container-content h5{
+    margin-bottom: 4px;
+    font-size: .7rem;
+  }
+  .itemCard-container-content h4{
+    font-size: .75rem;
+    font-weight: 400;
+  }
+  .itemCard-container-content p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 10px;
+  color: #cf2929;
+}
   .discount-badge {
     font-size: 0.7rem;
     font-weight: normal;
@@ -194,11 +211,24 @@
   .itemCard-container {
     /* width: 210px;
         height: 220px; */
+    /* width: 100vw; */
+    overflow: hidden;
+    border-radius: 0;
+  }
+  .itemCard-container-img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 340px) {
+  .itemCard-container {
+    /* width: 210px;
+        height: 220px; */
     width: 100vw;
     overflow: hidden;
     border-radius: 0;
   }
   .itemCard-container-img {
-    height: 370px;
+    height: 300px;
   }
 }

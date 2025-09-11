@@ -70,3 +70,22 @@
     font-size: 0.85rem;
   }
 }
+
+@media (max-width: 380px) {
+  .utility-error-img{
+    width: 90px;
+  }
+  .utility-error-img-2 {
+  width: 140px;  
+}
+  .utility-error h2 {
+    font-size: 1rem !important;
+  }
+  .utility-error p {
+    font-size: 0.8rem;
+  }
+  .utility-error-btn {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+}
