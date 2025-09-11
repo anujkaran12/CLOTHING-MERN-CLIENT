@@ -68,7 +68,7 @@
 
 .single-product-title {
   font-size: 1.6rem;
-
+  word-wrap: break-word;
   font-weight: 700;
   
   text-transform: uppercase;

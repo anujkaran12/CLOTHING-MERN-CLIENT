@@ -147,14 +147,7 @@ const ProfileCard = ({ userData }) => {
                 style={{ display: "none" }}
               />
 
-              {!editing && (
-                <button
-                  className="edit-btn"
-                  onClick={() => setEditing((prev) => !prev)}
-                >
-                  Edit
-                </button>
-              )}
+             
             </div>
 
             {/* Profile info */}
@@ -219,9 +212,16 @@ const ProfileCard = ({ userData }) => {
                   <p>{profile.email}</p>
                   <p>{profile.mobile}</p>
                   <p>{profile.address}</p>
-
+ {!editing && (
+                <button
+                  className="profile-btn edit-btn"
+                  onClick={() => setEditing((prev) => !prev)}
+                >
+                  Edit
+                </button>
+              )}
                   {userData.role === "buyer" && (
-                    <button className="orders-btn" onClick={handleCheckOrders}>
+                    <button className="profile-btn orders-btn" onClick={handleCheckOrders}>
                       Check Orders
                     </button>
                   )}
