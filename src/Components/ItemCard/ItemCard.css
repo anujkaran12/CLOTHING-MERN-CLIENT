@@ -166,14 +166,14 @@
   }
   .itemCard-container-content h5{
     margin-bottom: 4px;
-    font-size: .7rem;
+    font-size: .75rem;
   }
   .itemCard-container-content h4{
-    font-size: .75rem;
+    font-size: .8rem;
     font-weight: 400;
   }
   .itemCard-container-content p {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 400;
   margin-top: 10px;
   color: #cf2929;
