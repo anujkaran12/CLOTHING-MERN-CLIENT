@@ -190,7 +190,7 @@
   font-size: .9rem;
   font-weight: 400;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 25px;
   transition: all .25s ease;
 }
 .profile-btn:hover{
@@ -206,7 +206,7 @@
 }
 
 .orders-btn {
-  background-color: #333;
+  background-color: #222;
   color: white;
 
   
