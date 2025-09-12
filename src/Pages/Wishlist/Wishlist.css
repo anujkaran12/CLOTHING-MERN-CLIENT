@@ -1,5 +1,5 @@
 .wishlist-container {
-  padding: 2rem;
+  padding: 2rem 10px;
   max-width: 1400px;
   min-height: 100vh;
   margin: auto;
@@ -23,7 +23,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
+  
 }
 
 
