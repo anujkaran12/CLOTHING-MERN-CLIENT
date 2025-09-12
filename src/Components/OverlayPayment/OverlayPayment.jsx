@@ -14,6 +14,11 @@ const OverlayPayment = ({
   handleCOD,
   orderPlacedLoading,
 }) => {
+  // Example delivery date (7 days from now)
+  const deliveryDate = new Date();
+  deliveryDate.setDate(deliveryDate.getDate() + 7);
+  const formattedDeliveryDate = deliveryDate.toLocaleDateString();
+
   return (
     <div className="op-backdrop" role="dialog" aria-modal="true">
       <div className="op-card" onMouseDown={(e) => e.stopPropagation()}>
@@ -40,7 +45,9 @@ const OverlayPayment = ({
                 <p>
                 {address}
                 </p>
-                <p>{address.country}</p>
+                 <p className="op-delivery-date">
+                Delivery Expected By: <strong>{formattedDeliveryDate}</strong>
+                </p>
               </section>
 
               <section className="op-section">
