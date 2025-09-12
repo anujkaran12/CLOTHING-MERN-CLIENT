@@ -169,7 +169,7 @@
 @media (max-width: 480px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 2.5rem 1rem;
     justify-items: baseline;
   }
 
