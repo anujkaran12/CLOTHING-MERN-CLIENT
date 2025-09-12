@@ -89,7 +89,7 @@
   color: #cf2929;
 }
 .single-product-price del {
-  color: #aeaeae;
+  color: #a8a8a8;
 }
 
 .single-product-brand,
@@ -103,7 +103,7 @@
 .single-product-material span {
   font-size: 1rem;
 
-  color: #888;
+  color: #777;
 }
 
 .single-product-section-title {
@@ -283,6 +283,7 @@
   .single-product-brand,
   .single-product-material {
     font-size: 0.9rem;
+    font-weight: 500;
   }
 
   .single-product-actions {

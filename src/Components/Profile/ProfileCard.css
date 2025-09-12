@@ -7,12 +7,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   
-  /* padding: 2rem 1rem; */
+  
   /* min-width: 100%; */
   min-width: fit-content;
   min-height: fit-content;
   width: 550px;
   height: fit-content;
+  
 }
 .profile-content {
   display: flex;
@@ -28,9 +29,9 @@
 
 .profile-pic-wrapper {
   position: relative;
-  width: 120px;
+  width: 130px;
 
-  height: 120px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
   margin: auto;
@@ -179,7 +180,7 @@
 .profile-display p {
   margin: 0;
   font-size: 1rem;
-  color: #777;
+  color: #555;
   line-height: 1.1;
   max-width: 300px;
 }
@@ -189,13 +190,15 @@
   font-size: .9rem;
   font-weight: 400;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 20px;
+  transition: all .25s ease;
 }
 .profile-btn:hover{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 .edit-btn {
  margin-top: 20px;
+ border: 1px solid #bfbfbf;
 }
 .edit-btn:hover{
   background-color: var(--orange-color);
