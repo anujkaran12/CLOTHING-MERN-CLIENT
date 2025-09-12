@@ -46,14 +46,14 @@
   opacity: 1;
 }
 .itemCard-container-content {
-  padding: 1rem 5px 2rem 0;
+  padding: 1rem 5px 2.5rem 0;
 }
 
 .itemCard-container-content h5 {
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 400;
 
-  color: #a7a7a7;
+  color: #888;
   margin-bottom: 5px;
   width: fit-content;
   text-transform: uppercase;
