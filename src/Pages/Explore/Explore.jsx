@@ -27,7 +27,9 @@ const Explore = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const { wishlistProducts,loading:wishlistLoading } = useSelector((state) => state.wishlistReducer);
+  const { wishlistProducts, loading: wishlistLoading } = useSelector(
+    (state) => state.wishlistReducer
+  );
   const { productsData, error, loading } = useSelector(
     (state) => state.productsReducer
   );
@@ -108,63 +110,13 @@ const Explore = () => {
             />
           </div>
 
-          {/* Desktop filters */}
-          <div className="explore-filters-desktop">
-            <h1>CATEGORY</h1>
-            <div className="explore-categories">
-              {categories.map((cat) => (
-                <span
-                  key={cat}
-                  className={`explore-category-pill ${
-                    filters.category === cat.toLowerCase() ? "active" : ""
-                  }`}
-                  onClick={() =>
-                    handleFilterChange("category", cat.toLowerCase())
-                  }
-                >
-                  {cat.toUpperCase()}
-                </span>
-              ))}
-            </div>
-            <h1>SUB CATEGORY</h1>
-            <div className="explore-subcategories">
-              {subCategories.map((sub) => (
-                <span
-                  key={sub}
-                  className={`explore-subcategory-pill ${
-                    filters.subcategory === sub.toLowerCase() ? "active" : ""
-                  }`}
-                  onClick={() =>
-                    handleFilterChange("subcategory", sub.toLowerCase())
-                  }
-                >
-                  {sub.toUpperCase()}
-                </span>
-              ))}
-            </div>
-            <div className="explore-sort">
-              <label>Sort by:</label>
-              <select
-                value={filters.sort}
-                onChange={(e) => handleFilterChange("sort", e.target.value)}
-                className="explore-select"
-              >
-                <option value="default">Default</option>
-                <option value="lowToHigh">Price: Low to High</option>
-                <option value="highToLow">Price: High to Low</option>
-              </select>
-              <button className="explore-reset-button" onClick={resetFilters}>
-                Reset
-              </button>
-            </div>
-          </div>
           {/* Mobile filter */}
           <div className="explore-filters-mobile">
             <button
               className="explore-mobile-toggle"
               onClick={() => setShowMobileFilters(true)}
             >
-              Filters <i className="bi bi-sliders"></i>
+              FILTER AND SORT<i className="bi bi-sliders2"></i>
             </button>
 
             {/* Right panel */}
@@ -213,21 +165,22 @@ const Explore = () => {
                   </span>
                 ))}
               </div>
+              <div>
+                <h3>SORT BY PRICE</h3>
+                <select
+                  value={filters.sort}
+                  onChange={(e) => handleFilterChange("sort", e.target.value)}
+                  className="explore-select"
+                >
+                  <option value="default">Default</option>
+                  <option value="lowToHigh">Price: Low to High</option>
+                  <option value="highToLow">Price: High to Low</option>
+                </select>
 
-              <h3>Sort</h3>
-              <select
-                value={filters.sort}
-                onChange={(e) => handleFilterChange("sort", e.target.value)}
-                className="explore-select"
-              >
-                <option value="default">Default</option>
-                <option value="lowToHigh">Price: Low to High</option>
-                <option value="highToLow">Price: High to Low</option>
-              </select>
-
-              <button className="explore-reset-button" onClick={resetFilters}>
-                Reset
-              </button>
+                <button className="explore-reset-button" onClick={resetFilters}>
+                  Reset
+                </button>
+              </div>
             </div>
 
             {/* Overlay */}
@@ -241,8 +194,9 @@ const Explore = () => {
 
           {/* Result Count */}
           <div className="explore-count">
-            Showing {filteredProducts.length} result
-            {filteredProducts.length !== 1 && "s"}
+            SHOWING {filteredProducts.length} RESULT
+            {filteredProducts.length !== 1 && "S"}
+            {searchQuery && <> FOR <span>"{searchQuery}"</span></>}
           </div>
 
           {/* Products Grid */}

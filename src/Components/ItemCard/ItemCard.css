@@ -1,5 +1,5 @@
 .itemCard-container {
-  width: 315px;
+  width: 320px;
 
   position: relative;
 
@@ -14,7 +14,7 @@
 }
 .itemCard-container-img {
   width: 100%;
-  height: 460px;
+  height: 465px;
   overflow: hidden;
   position: relative;
 }
@@ -127,13 +127,13 @@
 
 .discount-badge {
   position: absolute;
-  top: 0px;
-  left:     0px;
-  background-color: #f63337;
+  top: 10px;
+  left: 10px;
+  background-color: #da3538;
   color: #fff;
-  padding: 6px 9px;
-  /* border-radius: 4px; */
-  font-size: 0.85rem;
+  padding: 5px 8px;
+  
+  font-size: 0.75rem;
   font-weight: 400;
   z-index: 10;
 }
