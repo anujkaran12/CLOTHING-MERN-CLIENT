@@ -6,17 +6,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 10px;
   z-index: 9999;
-  /* height: 100vh;
-  width: 500px; */
-  /* background-color: red; */
 }
 
 /* Card */
 .op-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 600px;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
@@ -55,7 +52,10 @@
   padding: 6px;
   border-radius: 8px;
 }
-.op-close:hover { background: #f8fafc; }
+
+.op-close:hover {
+  background: #f8fafc;
+}
 
 /* Body */
 .op-body {
@@ -79,6 +79,68 @@
 
 .op-amount {
   font-weight: 700;
+  color: #0f172a;
+}
+
+/* Shipping Address Section */
+.op-section {
+  margin-bottom: 16px;
+}
+
+.op-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.op-section p {
+  margin: 4px 0;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+/* Cart Items */
+.op-cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.op-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.op-cart-item:last-child {
+  border-bottom: none;
+}
+
+.op-cart-item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.op-cart-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.op-cart-item-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.op-cart-item-price {
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #0f172a;
 }
 
@@ -115,13 +177,17 @@
   background: #111827;
   color: white;
 }
-.op-btn-primary:hover { background: #0b1220; }
+
+.op-btn-primary:hover {
+  background: #0b1220;
+}
 
 .op-btn-outline {
   background: white;
   color: #111827;
   border-color: #e5e7eb;
 }
+
 .op-btn-outline:hover {
   background: #f9fafb;
 }
@@ -137,6 +203,7 @@
 .op-footer {
   padding: 10px 16px 16px;
 }
+
 .op-policy {
   color: #64748b;
 }
@@ -147,6 +214,7 @@
     border-radius: 12px;
     max-width: 100%;
   }
+
   .op-btn {
     min-width: 100%;
   }

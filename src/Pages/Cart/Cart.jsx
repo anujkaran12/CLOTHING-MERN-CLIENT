@@ -241,6 +241,8 @@ const Cart = () => {
                 handleCOD={handleCOD}
                 total={total}
                 orderPlacedLoading={orderPlacedLoading}
+                cartItems={cartProducts}
+                address={address}
               />
             )}
           </div>

@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./OverlayPayment.css";
-import { toast } from "react-toastify";
 import Loading from "../Utility/Loading/Loading";
 
 const OverlayPayment = ({
-  isOpen,
+  cartItems = [],
+  address = {},
   total = 0,
   currency = "₹",
-  onClose = () => {},
   loading = false,
   title = "Confirm & Pay",
   setCheckout,
@@ -35,6 +34,39 @@ const OverlayPayment = ({
             </header>
 
             <div className="op-body">
+              <section className="op-section">
+                <h4>Shipping Address</h4>
+                
+                <p>
+                {address}
+                </p>
+                <p>{address.country}</p>
+              </section>
+
+              <section className="op-section">
+                <h4>Cart Items</h4>
+                <ul className="op-cart-items">
+                  {cartItems.map((item, index) => (
+                    <li key={index} className="op-cart-item">
+                      <img
+                        src={item.product.thumbnail.secure_url}
+                        alt={item.product.title}
+                        className="op-cart-item-image"
+                      />
+                      <div className="op-cart-item-details">
+                        <span className="op-cart-item-name">
+                          {item.product.title} x {item.quantity}
+                        </span>
+                        <span className="op-cart-item-price">
+                          {currency}
+                          {(item.product.discountPrice || item.product.price * item.quantity).toFixed(2)}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
               <div className="op-row">
                 <span className="op-label">Total Payable</span>
                 <span className="op-amount">
