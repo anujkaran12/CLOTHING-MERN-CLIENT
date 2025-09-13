@@ -12,8 +12,7 @@ function GoogleSignup() {
   const handleSuccess = async (credentialResponse) => {
     try {
       const token = credentialResponse.credential;
-      const userInfo = jwtDecode(token);
-  
+
       // Send to backend
 
       const res = await axios.post(
