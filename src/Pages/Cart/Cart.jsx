@@ -34,12 +34,13 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
   const [unavailableItems, setUnavailableItems] = useState([]);
-  const[orderPlacedLoading,setOrderPlacedLoading] = useState(false)
+  const [orderPlacedLoading, setOrderPlacedLoading] = useState(false);
 
   useEffect(() => {
     if (userData?.address) {
       setAddress(userData.address);
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [userData]);
 
   const handleRemove = useCallback(
@@ -48,31 +49,31 @@ const Cart = () => {
   );
 
   const handleCOD = useCallback(async () => {
-    setOrderPlacedLoading(true)
+    setOrderPlacedLoading(true);
     const unavailable = await checkCartAvailability();
 
     if (unavailable.length !== 0) {
-      setCheckout(false)
-      setOrderPlacedLoading(false)
+      setCheckout(false);
+      setOrderPlacedLoading(false);
       return toast.error("Some items were unavailable");
     }
 
     const orderSuccess = await placeOrderInDB(cartProducts, address, "COD");
     if (orderSuccess) {
       setCheckout(false);
-      setOrderPlacedLoading(false)
+      setOrderPlacedLoading(false);
       navigate("/success");
       dispatch(fetchCart());
     }
   }, [address, cartProducts, dispatch, navigate]);
 
   const handlePayment = useCallback(async () => {
-    setOrderPlacedLoading(true)
+    setOrderPlacedLoading(true);
     const unavailable = await checkCartAvailability();
 
     if (unavailable.length !== 0) {
-      setCheckout(false)
-      setOrderPlacedLoading(false)
+      setCheckout(false);
+      setOrderPlacedLoading(false);
       return toast.error("Some items were unavailable");
     }
     try {
@@ -95,11 +96,11 @@ const Cart = () => {
       const { id: sessionId } = data;
       console.log("sessionId - ", sessionId);
       const { error } = await stripe.redirectToCheckout({ sessionId });
-      setOrderPlacedLoading(false)
+      setOrderPlacedLoading(false);
       if (error) console.error(error);
     } catch (err) {
       console.error("Payment error:", err);
-      setOrderPlacedLoading(false)
+      setOrderPlacedLoading(false);
     }
   }, [total]);
 
@@ -140,15 +141,15 @@ const Cart = () => {
     }
   };
 
-  const onProceedHandler = ()=>{
-    if(cartProducts.length === 0){
-      return toast.error("Cart is empty")
+  const onProceedHandler = () => {
+    if (cartProducts.length === 0) {
+      return toast.error("Cart is empty");
     }
-    if(!address){
-      return toast.error("No address found")
+    if (!address) {
+      return toast.error("No address found");
     }
-    setCheckout(true)
-  }
+    setCheckout(true);
+  };
   return (
     <div style={{ minHeight: "100vh" }}>
       {/* // <div> */}
