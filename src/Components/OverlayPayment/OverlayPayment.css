@@ -219,7 +219,7 @@
 /* Responsive tweaks */
 @media (max-width: 480px) {
   .op-card {
-    border-radius: 12px;
+    
     max-width: 100%;
   }
 
