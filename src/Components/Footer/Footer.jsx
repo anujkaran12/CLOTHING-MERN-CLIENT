@@ -32,10 +32,10 @@ const Footer = () => {
 
         <div className="footer-section">
           <h3>Support</h3>
-          <Link to="/faq">FAQ</Link>
-          <Link to="/shipping">Shipping</Link>
-          <Link to="/returns">Returns</Link>
-          <Link to="/privacy">Privacy Policy</Link>
+          <Link >FAQ</Link>
+          <Link >Terms & </Link>
+          
+          <Link to="/privacy-policy">Privacy Policy</Link>
         </div>
 
         {/* Newsletter Signup */}

@@ -7,16 +7,16 @@ import { toast } from "react-toastify";
 import Loading from "../Utility/Loading/Loading";
 import { useDispatch } from "react-redux";
 import { fetchUserData } from "../../redux/userSlice";
+
 const ProfileCard = ({ userData }) => {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState(userData);
-
   const [tempProfile, setTempProfile] = useState(profile);
   const [previewPic, setPreviewPic] = useState(profile.avatar?.secure_url);
   const fileInputRef = useRef(null);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,22 +44,23 @@ const ProfileCard = ({ userData }) => {
     setEditing(false);
   };
 
-  const navigate = useNavigate();
   const handleCheckOrders = () => {
     navigate("/Orders");
   };
 
-  // compare temp vs profile
+  const handlePrivacyPolicy = () => {
+    navigate("/privacy-policy");
+  };
+
   const isEqual = (obj1, obj2) => {
     const keys1 = Object.keys(obj1);
     const keys2 = Object.keys(obj2);
     if (keys1.length !== keys2.length) return false;
 
     for (let key of keys1) {
-      const val1 = obj1[key] ?? ""; // default to empty string if undefined
+      const val1 = obj1[key] ?? "";
       const val2 = obj2[key] ?? "";
 
-      // handle objects differently (like avatar File or URL object)
       if (typeof val1 === "object" || typeof val2 === "object") {
         if (JSON.stringify(val1) !== JSON.stringify(val2)) return false;
       } else {
@@ -86,9 +87,10 @@ const ProfileCard = ({ userData }) => {
     if (fileInput) {
       formData.append("avatar", fileInput);
     }
+
     setLoading(true);
     try {
-      const res = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/user/info`,
         formData,
         {
@@ -100,18 +102,18 @@ const ProfileCard = ({ userData }) => {
         }
       );
       setEditing(false);
-      toast.success("Profile update successfully");
+      toast.success("Profile updated successfully");
       await dispatch(fetchUserData());
     } catch (error) {
       toast.error(error.response?.data || "Network error");
     }
     setLoading(false);
-  }, [profile, tempProfile]);
+  }, [profile, tempProfile, dispatch]);
 
   return (
     <div className="profile-card">
       {loading ? (
-        <Loading messge={"updating profile..."} />
+        <Loading messge={"Updating profile..."} />
       ) : (
         <>
           <div className="profile-content">
@@ -131,10 +133,7 @@ const ProfileCard = ({ userData }) => {
               </div>
 
               {editing && (
-                <div
-                  className="camera-icon-profile"
-                  onClick={triggerFilePicker}
-                >
+                <div className="camera-icon-profile" onClick={triggerFilePicker}>
                   <i className="bi bi-camera"></i>
                 </div>
               )}
@@ -146,40 +145,17 @@ const ProfileCard = ({ userData }) => {
                 onChange={handleImageUpload}
                 style={{ display: "none" }}
               />
-
-             
             </div>
 
             {/* Profile info */}
             <div className="profile-info-section">
               {editing ? (
-                <form
-                  className="profile-form"
-                  onSubmit={(e) => e.preventDefault()}
-                >
+                <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
                   {[
-                    {
-                      label: "Full Name",
-                      name: "fullName",
-                      value: tempProfile.fullName,
-                    },
-                    {
-                      label: "Email",
-                      name: "email",
-                      value: tempProfile.email,
-                      type: "email",
-                    },
-                    {
-                      label: "Mobile Number",
-                      name: "mobile",
-                      value: tempProfile.mobile,
-                      type: "tel",
-                    },
-                    {
-                      label: "Address",
-                      name: "address",
-                      value: tempProfile.address,
-                    },
+                    { label: "Full Name", name: "fullName", value: tempProfile.fullName },
+                    { label: "Email", name: "email", value: tempProfile.email, type: "email" },
+                    { label: "Mobile Number", name: "mobile", value: tempProfile.mobile, type: "tel" },
+                    { label: "Address", name: "address", value: tempProfile.address },
                   ].map((field, i) => (
                     <div className="input-group-profile" key={i}>
                       <input
@@ -193,15 +169,12 @@ const ProfileCard = ({ userData }) => {
                       <label>{field.label}</label>
                     </div>
                   ))}
+
                   <div className="button-group">
                     <button type="button" className="save" onClick={handleSave}>
                       Save
                     </button>
-                    <button
-                      type="button"
-                      className="cancel"
-                      onClick={handleCancel}
-                    >
+                    <button type="button" className="cancel" onClick={handleCancel}>
                       Cancel
                     </button>
                   </div>
@@ -212,14 +185,12 @@ const ProfileCard = ({ userData }) => {
                   <p>{profile.email}</p>
                   <p>{profile.mobile}</p>
                   <p>{profile.address}</p>
- {!editing && (
-                <button
-                  className="profile-btn edit-btn"
-                  onClick={() => setEditing((prev) => !prev)}
-                >
-                  Edit
-                </button>
-              )}
+
+                  {!editing && (
+                    <button className="profile-btn edit-btn" onClick={() => setEditing(true)}>
+                      Edit
+                    </button>
+                  )}
                   {userData.role === "buyer" && (
                     <button className="profile-btn orders-btn" onClick={handleCheckOrders}>
                       Check Orders
@@ -229,9 +200,15 @@ const ProfileCard = ({ userData }) => {
               )}
             </div>
           </div>
+
           {userData.role === "seller" && (
             <button className="orders-btn">Check orders</button>
           )}
+
+          {/* Privacy Policy link */}
+          <div className="privacy-policy-link" onClick={handlePrivacyPolicy}>
+           Know about Privacy Policy
+          </div>
         </>
       )}
     </div>

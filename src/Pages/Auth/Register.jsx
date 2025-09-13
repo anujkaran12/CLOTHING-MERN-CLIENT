@@ -7,6 +7,7 @@ import VerifyCode from "./VerifyCode";
 import Loading from "../../Components/Utility/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
+import TermsAndConditions from "../../Components/TermsAndConditions/TermsAndConditions";
 
 const Register = ({ setLoginForm, setShowGoogleBtn }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
   const [isCodeSend, setIsCodeSend] = useState(false);
   const [verificationCode, setVerificationCode] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showTermsAndConditions,setShowTermsAndConditions] = useState(false)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -45,11 +47,15 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
     if (formData.password.trim() !== formData.confirmPassword.trim()) {
       return toast.warn("Password should be match");
     }
-
-    //
-
-    await sendMail();
+    setShowTermsAndConditions(true)
   };
+  
+  const onAgreeTermsAndCondition =async ()=>{
+    setShowTermsAndConditions(false)
+    await sendMail();
+    
+  }
+  
 
   //method for send mail
   const sendMail = useCallback(async () => {
@@ -60,13 +66,13 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
         { email: formData.email.trim(), code: verificationCode }
       );
       if (res) {
-        console.log(res);
+        
         setVerificationCode(res.data.verificationCode.toString());
         setIsCodeSend(true);
         toast.success("Verification code send");
       }
     } catch (error) {
-      console.log(error);
+      
       toast.error(error.response.data || "Network error");
       setIsCodeSend(false);
     }
@@ -231,6 +237,7 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
           <span>or</span>
         </form>
       )}
+      {showTermsAndConditions && <TermsAndConditions onAgree={onAgreeTermsAndCondition} onCancel={()=>setShowTermsAndConditions(false)}/>}
     </>
   );
 };

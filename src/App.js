@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import React, { Suspense, lazy } from "react";
 import Loading from "./Components/Utility/Loading/Loading";
 
+
 // Lazy imports
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Explore = lazy(() => import("./Pages/Explore/Explore"));
@@ -20,6 +21,7 @@ const Success = lazy(() => import("./Pages/PaymentStatus/Success"));
 const Orders = lazy(() => import("./Pages/Orders/Orders"));
 const ResetPassword = lazy(() => import("./Pages/ResetPassword/ResetPassword"));
 const PageNotFound = lazy(() => import("./Components/Utility/ErrorStates/PageNotFound"));
+const PrivacyPolicy = lazy(()=>import("./Pages/PrivacyPolicy/PrivacyPolicy"));
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
             <Route path="/Orders" element={<Orders />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
           </Routes>
         </Suspense>
 
