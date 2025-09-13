@@ -11,6 +11,7 @@ import { addToCart } from "../../redux/cartSlice";
 import { fetchAllProducts } from "../../redux/productsSlice";
 import ItemCard from "../../Components/ItemCard/ItemCard";
 import { addToWishlist, removeFromWishlist } from "../../redux/wishlistSlice";
+import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState(null);
@@ -91,7 +92,7 @@ const SingleProduct = () => {
     const res = wishlistProducts?.filter((item) => item._id === product?._id);
     return res.length !== 0 ? true : false;
   }, [wishlistProducts, product]);
-  
+
   const onWishlistHandler = () => {
     if (!userData) {
       return toast.error("Login for add in wishlist");
@@ -102,6 +103,11 @@ const SingleProduct = () => {
       return dispatch(addToWishlist(product._id));
     }
   };
+  const calculateDiscount = useMemo(() => {
+    return Math.round(
+      ((product?.price - product?.discountPrice) / product?.price) * 100
+    );
+  }, [product]);
   return (
     <div className="single-product-page">
       {loading ? (
@@ -116,12 +122,12 @@ const SingleProduct = () => {
           <div className="single-product-container">
             {/* Left: Images */}
             <div className="single-product-images">
-              <img
+              {/* <img
                 src={selectedImage}
                 alt={product.title}
                 className="single-product-main-img"
                 loading="lazy"
-              />
+              /> */}
               <div className="single-product-gallery">
                 {[product.thumbnail, ...product.galleryImages].map(
                   (img, idx) => (
@@ -143,24 +149,24 @@ const SingleProduct = () => {
             {/* Right: Details */}
             <div className="single-product-details">
               <h1 className="single-product-title">{product.title}</h1>
-              <p className="single-product-description">
-                {product.description}
-              </p>
+
               <p className="single-product-price">
                 {product.discountPrice ? (
                   <>
-                    <del>Rs.{product.price}</del> &nbsp; Rs.
-                    {product.discountPrice}
+                    Rs.
+                    {product.discountPrice} &nbsp; <del>Rs.{product.price}</del>{" "}
+                    &nbsp; <div>({calculateDiscount}% OFF)</div>
                   </>
                 ) : (
                   <>Rs.{product.price}</>
                 )}
+                <span>inclusive of all taxes</span>
               </p>
               <p className="single-product-brand">
-                BRAND: <span>{product.brand}</span>
+                BRAND: <span>{product.brand.toUpperCase()}</span>
               </p>
               <p className="single-product-material">
-                MATERIAL: <span>{product.material}</span>
+                MATERIAL: <span>{product.material.toUpperCase()}</span>
               </p>
 
               {/* Sizes */}
@@ -234,22 +240,21 @@ const SingleProduct = () => {
                   onClick={handlerAddToCart}
                   disabled={!selectedSize || quantity < 1 || isAdding}
                 >
-                   {isAdding ? "Adding..." : <><p>ADD TO CART</p><i className="bi bi-cart4"></i></>}
+                  {isAdding ? (
+                    "Adding..."
+                  ) : (
+                    <>
+                      <p>ADD TO CART</p>
+                      <i className="bi bi-cart4"></i>
+                    </>
+                  )}
                 </button>
               </div>
-
-              {/* Seller Info */}
-              <div className="single-product-seller">
-                <p className="single-product-section-title">
-                  Seller Information:
-                </p>
-                <p>
-                  <strong>Name:</strong> {product.seller.fullName}
-                </p>
-                <p>
-                  <strong>Email:</strong> {product.seller.email}
-                </p>
-              </div>
+              <p className="single-product-description">
+                {product.description}
+              </p>
+              <ReviewCard />
+          
             </div>
           </div>
 
