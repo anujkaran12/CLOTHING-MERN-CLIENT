@@ -112,11 +112,14 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .payment-status-card {
     padding: 1.5rem;
   }
   .payment-status-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  .payment-status-message{
+    font-size: .85rem;
   }
 }

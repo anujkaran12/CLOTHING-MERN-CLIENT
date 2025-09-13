@@ -67,7 +67,7 @@ const Success = () => {
   return (
     <div className="payment-status-container">
       {loading || userLoading ? (
-        <Loading messge={"Don't press reload or go back !"} />
+        <Loading messge={"Don't go back or reload page !"} />
       ) : userError ? (
         <NotLoggedIn />
       ) : !userData ? (

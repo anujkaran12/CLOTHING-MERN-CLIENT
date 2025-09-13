@@ -5,7 +5,7 @@ const Loading = ({messge}) => {
   return (
     <div className="loading-container">
       <div className="loader" />
-      <p>{messge || "Loading..."}</p>
+      <p>{messge}</p>
     </div>
   );
 };
