@@ -201,10 +201,7 @@ const ProfileCard = ({ userData }) => {
             </div>
           </div>
 
-          {userData.role === "seller" && (
-            <button className="orders-btn">Check orders</button>
-          )}
-
+          
           {/* Privacy Policy link */}
           <div className="privacy-policy-link" onClick={handlePrivacyPolicy}>
            Know about Privacy Policy
