@@ -10,7 +10,7 @@ const CartSummary = ({ onProceedHandler, setTotal, address, setAddress }) => {
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [error, setError] = useState("");
 
-  // ✅ Coupon logic
+  
   const availableCoupons = {
     SAVE20: 0.2, // 20% off
     SAVE10: 0.1, // 10% off
@@ -106,6 +106,7 @@ const CartSummary = ({ onProceedHandler, setTotal, address, setAddress }) => {
             placeholder="Enter coupon code"
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value)}
+            required
           />
           <button type="submit">Apply</button>
         </form>
