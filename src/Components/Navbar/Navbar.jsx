@@ -170,7 +170,7 @@ const Navbar = () => {
               <Link to="/Explore?cat=women" onClick={closeMenu}>
                 Women
               </Link>
-              <Link to="/Explore?cat=kids" onClick={closeMenu}>
+              <Link to="/Explore?cat=kid" onClick={closeMenu}>
                 Kids
               </Link>
               <Link to="/Explore?cat=new" onClick={closeMenu}>
