@@ -173,9 +173,7 @@ const Navbar = () => {
               <Link to="/Explore?cat=kid" onClick={closeMenu}>
                 Kids
               </Link>
-              <Link to="/Explore?cat=new" onClick={closeMenu}>
-                New Arrivals
-              </Link>
+           
               <Link to="/Explore?cat=sale" onClick={closeMenu}>
                 Sale
               </Link>

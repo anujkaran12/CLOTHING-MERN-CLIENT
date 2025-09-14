@@ -55,10 +55,16 @@ const Explore = () => {
 
   const filteredProducts = useMemo(() => {
     let filtered = [...productsData];
-    if (filters.category !== "all")
+    if (filters.category === "sale") {
+      filtered = filtered.filter((p) => p.discountPrice);
+    }
+
+    if (filters.category !== "all" && filters.category !== "sale") {
       filtered = filtered.filter(
         (p) => p.category?.toLowerCase() === filters.category.toLowerCase()
       );
+    }
+
     if (filters.subcategory !== "all")
       filtered = filtered.filter(
         (p) =>
@@ -196,7 +202,12 @@ const Explore = () => {
           <div className="explore-count">
             SHOWING {filteredProducts.length} RESULT
             {filteredProducts.length !== 1 && "S"}
-            {searchQuery && <> FOR <span>"{searchQuery}"</span></>}
+            {searchQuery && (
+              <>
+                {" "}
+                FOR <span>"{searchQuery}"</span>
+              </>
+            )}
           </div>
 
           {/* Products Grid */}
