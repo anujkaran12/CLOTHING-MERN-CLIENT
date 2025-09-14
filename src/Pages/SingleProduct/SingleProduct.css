@@ -291,6 +291,10 @@
     width: 100%;
     
   }
+  .related-products-grid {
+ margin-top: 2.4rem;
+ padding: 0 10px;
+}
   .related-products-title{
     font-size: 1.7rem;
   }
