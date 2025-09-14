@@ -11,7 +11,7 @@ import { addToCart } from "../../redux/cartSlice";
 import { fetchAllProducts } from "../../redux/productsSlice";
 import ItemCard from "../../Components/ItemCard/ItemCard";
 import { addToWishlist, removeFromWishlist } from "../../redux/wishlistSlice";
-import ReviewCard from "../../Components/ReviewCard/ReviewCard";
+
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState(null);
