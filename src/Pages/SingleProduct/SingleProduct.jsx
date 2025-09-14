@@ -253,7 +253,7 @@ const SingleProduct = () => {
               <p className="single-product-description">
                 {product.description}
               </p>
-              <ReviewCard />
+              
           
             </div>
           </div>

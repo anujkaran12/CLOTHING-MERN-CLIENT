@@ -1,5 +1,5 @@
 .single-product-page {
-  padding: 20px 2rem;
+  padding: 10px 2rem 20px 2rem;
   min-height: 100vh;
 }
 
@@ -59,11 +59,12 @@
   
   font-weight: 500;
   text-transform: uppercase;
-  color: #333;
+  color: #222;
+  
 }
 
 .single-product-description {
-  font-size: 1rem;
+  font-size: .95rem;
   letter-spacing: .2px;
   word-spacing: .5px;
   color: #444;
@@ -74,8 +75,9 @@
 
 .single-product-price {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #cf2929ed;
+  
 }
 
 .single-product-price del {
@@ -90,25 +92,29 @@
 }
 
 .single-product-price span {
-  font-size: .9rem;
+  font-size: 1rem;
   margin-top: 5px;
   font-weight: 400;
   color: #999;
   display: block;
+  
 }
 
 .single-product-brand,
 .single-product-material {
   font-size: .95rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: capitalize;
   letter-spacing: .3px;
+  
 }
 
 .single-product-brand span,
 .single-product-material span {
   font-size: 1rem;
-  color: #777;
+  color: #888;
+  font-weight: 500;
+  
 }
 
 .single-product-section-title {
@@ -247,7 +253,7 @@
 @media (max-width: 1000px) {}
 @media (max-width: 800px) {
   .single-product-page {
-    padding: 10px;
+    padding: 10px 0;
   }
 
   .single-product-container {
@@ -257,14 +263,15 @@
   }
   
   .single-product-details {
-    padding: 10px 0 1rem 0;
-    gap: 20px;
+    padding: 5px 10px 1rem 10px;
+    gap: 28px;
   }
   .single-product-title{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .single-product-price{
     font-size: 1.1rem;
+    font-weight: 400;
   }
    .single-product-brand,.single-product-material{
     font-size: .9rem;
@@ -282,7 +289,7 @@
   }
   .single-product-gallery-img{
     width: 100%;
-    height: fit-content;
+    
   }
   .related-products-title{
     font-size: 1.7rem;

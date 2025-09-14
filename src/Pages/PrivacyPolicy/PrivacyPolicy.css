@@ -1,5 +1,5 @@
 .PP-page-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 40px auto;
   padding: 10px 20px;
   background: #ffffff;
@@ -7,6 +7,8 @@
   
   
   color: #444;
+  letter-spacing: .2px;
+  word-spacing: 1px;
 }
 
 .PP-title {
@@ -58,7 +60,7 @@
 }
 
 .PP-list li {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 a {
@@ -73,17 +75,19 @@ a:hover {
 @media (max-width: 768px) {
   .PP-page-container {
     padding: 10px;
-    margin: 20px;
+    margin: 15px 0 20px 0 ;
   }
 
   .PP-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .PP-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
-
+.PP-text{
+  font-size: .95rem;
+}
   .PP-subsub {
     font-size: 1.1rem;
   }
