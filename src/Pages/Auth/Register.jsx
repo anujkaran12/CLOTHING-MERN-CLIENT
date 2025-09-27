@@ -16,7 +16,7 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
   const [isCodeSend, setIsCodeSend] = useState(false);
   const [verificationCode, setVerificationCode] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [showTermsAndConditions,setShowTermsAndConditions] = useState(false)
+  const [showTermsAndConditions, setShowTermsAndConditions] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -47,15 +47,19 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
     if (formData.password.trim() !== formData.confirmPassword.trim()) {
       return toast.warn("Password should be match");
     }
-    setShowTermsAndConditions(true)
+    setShowTermsAndConditions(true);
   };
-  
-  const onAgreeTermsAndCondition =async ()=>{
-    setShowTermsAndConditions(false)
-    await sendMail();
-    
-  }
-  
+
+  const onAgreeTermsAndCondition = useCallback(async () => {
+    setShowTermsAndConditions(false);
+    // await sendMail();
+    setLoading(true);
+    await dispatch(registerUser(formData));
+    setLoginForm(true);
+    setIsCodeSend(false);
+    toast.success("Now login to continue");
+    setLoading(false);
+  }, [dispatch, formData, setLoginForm]);
 
   //method for send mail
   const sendMail = useCallback(async () => {
@@ -66,13 +70,11 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
         { email: formData.email.trim(), code: verificationCode }
       );
       if (res) {
-        
         setVerificationCode(res.data.verificationCode.toString());
         setIsCodeSend(true);
         toast.success("Verification code send");
       }
     } catch (error) {
-      
       toast.error(error.response.data || "Network error");
       setIsCodeSend(false);
     }
@@ -117,8 +119,9 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
               type="button"
               className={formData.role === "buyer" ? "active" : ""}
               onClick={() => {
-                setShowGoogleBtn(true)
-                setFormData({ ...formData, role: "buyer" })}}
+                setShowGoogleBtn(true);
+                setFormData({ ...formData, role: "buyer" });
+              }}
               disabled={loading}
             >
               Buyer
@@ -237,7 +240,12 @@ const Register = ({ setLoginForm, setShowGoogleBtn }) => {
           <span>or</span>
         </form>
       )}
-      {showTermsAndConditions && <TermsAndConditions onAgree={onAgreeTermsAndCondition} onCancel={()=>setShowTermsAndConditions(false)}/>}
+      {showTermsAndConditions && (
+        <TermsAndConditions
+          onAgree={onAgreeTermsAndCondition}
+          onCancel={() => setShowTermsAndConditions(false)}
+        />
+      )}
     </>
   );
 };
